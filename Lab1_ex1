@@ -1,0 +1,31 @@
+A = ['a', 'b', 'c']
+B = ['x', 'y', 'z']
+C = [1, 2, 3]
+
+
+def concat(s1, s2):
+    return s1 + s2
+
+def inverse(s):
+    return s[::-1]
+
+def substitute(s, a, b):
+    return s.replace(a, b)
+
+def length(s):
+    return len(s)
+
+
+s1 = "".join(A)  # 'abc'
+s2 = "".join(B)  # 'xyz'
+s3 = "".join(map(str, C))  # '123'
+
+print("Concatenarea șirului s1 cu s2:", concat(s1, s2))
+print("Inversarea șirului s1:", inverse(s1))
+print("Substituția simbolului 'a' cu 'd' în șirul s1:", substitute(s1, 'a', 'd'))
+print("Lungimea șirului s1:", length(s1))
+
+print("Concatenarea șirului s2 cu s3:", concat(s2, s3))
+print("Inversarea șirului s3:", inverse(s3))
+print("Substituția simbolului '1' cu '9' în șirul s3:", substitute(s3, '1', '9'))
+print("Lungimea șirului s2:", length(s2))
