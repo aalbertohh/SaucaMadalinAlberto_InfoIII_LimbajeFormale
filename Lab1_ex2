@@ -15,7 +15,7 @@ def reverse(s):
 
 def extract(s, i, j):
     extracted_str = ''
-    for index in range(i, j + 1):  # Extragem caracterele de la i la j
+    for index in range(i, j + 1): 
         extracted_str += s[index]
     return extracted_str
 
