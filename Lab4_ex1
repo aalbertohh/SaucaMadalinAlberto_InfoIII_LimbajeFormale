@@ -1,0 +1,21 @@
+stari = {'A', 'B'}
+reguli_tranzitie = {
+    'A': {'0': 'B', '1': 'A'},
+    'B': {'0': 'A', '1': 'B'}
+}
+
+def determina_starea_finala(secventa):
+    stare_curenta = 'A'  # Starea inițială
+    for simbol in secventa:
+        stare_curenta = reguli_tranzitie[stare_curenta][simbol]
+    return stare_curenta
+
+print("Introduceți secvențele de intrare ('0' și '1'). Apăsați Enter pe o linie goală pentru a încheia.")
+
+while True:
+    secventa = input("Introduceți o secvență: ")
+    if secventa == "":
+        print("Introducere încheiată.")
+        break
+    stare_finala = determina_starea_finala(secventa)
+    print(f"Starea finală pentru secvența '{secventa}' este: {stare_finala}")
