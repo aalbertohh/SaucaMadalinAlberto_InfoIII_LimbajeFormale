@@ -1,0 +1,32 @@
+def delta(stare, intrare):
+    tranziții = {
+        'q0': {'C': 'q1', 'T': 'q2', 'A': 'q3', 'H': 'q4'},
+        'q1': {'OK': 'q4'},
+        'q2': {'OK': 'q4'},
+        'q3': {'OK': 'q4'},
+        'q4': {'OK': 'q0'}
+    }
+    return tranziții.get(stare, {}).get(intrare, None)
+
+def interacțiune_utilizator():
+    stare_curentă = 'q0'
+    print("Automat pentru băuturi. Alegeți o opțiune: C (Cafea), T (Ceai), A (Cappuccino), H (Ciocolată caldă), OK (Confirmare), EXIT (Ieșire).")
+
+    while True:
+        intrare = input("Alegeți o opțiune: ").upper()
+        if intrare == 'EXIT':
+            print("Ați ieșit din program.")
+            break
+
+        stare_următoare = delta(stare_curentă, intrare)
+
+        if stare_următoare is not None:
+            stare_curentă = stare_următoare
+            if stare_curentă == 'q4':
+                print("Băutură pregătită. Apăsați OK pentru a reveni la meniul principal sau EXIT pentru a ieși.")
+            elif stare_curentă == 'q0':
+                print("Meniu principal. Alegeți băutura.")
+        else:
+            print("Opțiune invalidă. Încercați din nou.")
+
+interacțiune_utilizator()
