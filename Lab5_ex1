@@ -1,0 +1,31 @@
+class MasinaMoore:
+    def __init__(self):
+        self.stare_curenta = 'S1'
+        self.tranzitii = {
+            ('S1', 'A'): 'S1',
+            ('S1', 'B'): 'S2',
+            ('S2', 'A'): 'S1',
+            ('S2', 'B'): 'S2'
+        }
+        self.iesire = {
+            'S1': 'O1',
+            'S2': 'O2'
+        }
+
+    def tranzitie(self, intrare):
+        if (self.stare_curenta, intrare) in self.tranzitii:
+            self.stare_curenta = self.tranzitii[(self.stare_curenta, intrare)]
+        return self.iesire[self.stare_curenta]
+
+
+masina = MasinaMoore()
+
+while True:
+    intrare = input("Introduceți intrarea (A sau B) sau 'exit' pentru a ieși: ")
+    if intrare.upper() == 'EXIT':
+        break
+    elif intrare in ['A', 'B']:
+        iesire = masina.tranzitie(intrare)
+        print(f"Stare Curentă: {masina.stare_curenta}, Ieșire: {iesire}")
+    else:
+        print("Intrare invalidă. Vă rugăm să introduceți 'A' sau 'B'.")
