@@ -1,0 +1,29 @@
+class MasinaMealy:
+    def __init__(self):
+        self.stare_curenta = 'Q1'
+        self.tranzitii = {
+            ('Q1', 'X'): ('Q2', 'O1'),
+            ('Q1', 'Y'): ('Q1', 'O1'),
+            ('Q2', 'X'): ('Q1', 'O2'),
+            ('Q2', 'Y'): ('Q2', 'O2')
+        }
+
+    def tranzitie(self, intrare):
+        if (self.stare_curenta, intrare) in self.tranzitii:
+            self.stare_curenta, iesire = self.tranzitii[(self.stare_curenta, intrare)]
+            return iesire
+        else:
+            return "Tranziție invalidă"
+
+
+masina = MasinaMealy()
+
+while True:
+    intrare = input("Introduceți intrarea (X sau Y) sau 'exit' pentru a ieși: ")
+    if intrare.lower() == 'exit':
+        break
+    elif intrare in ['X', 'Y']:
+        iesire = masina.tranzitie(intrare)
+        print(f"Stare Curentă: {masina.stare_curenta}, Ieșire: {iesire}")
+    else:
+        print("Intrare invalidă. Vă rugăm să introduceți 'X' sau 'Y'.")
