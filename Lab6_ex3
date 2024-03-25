@@ -3,6 +3,10 @@ import re
 def validate_postal_code(code):
     return bool(re.compile(r'^[1-9][0-9][0-9]{3}$').match(code))
 
-user_code = input("Introduceți codul poștal pentru validare: ")
-result = validate_postal_code(user_code)
-print("Rezultatul validării:", "Valid" if result else "Invalid")
+while True:
+    user_code = input("Introduceți codul poștal pentru validare: ")
+    if user_code == "":
+        break
+    else:
+        result = validate_postal_code(user_code)
+        print("Rezultatul validării:", "Valid" if result else "Invalid")
