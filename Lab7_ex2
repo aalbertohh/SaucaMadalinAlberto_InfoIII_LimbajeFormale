@@ -1,0 +1,25 @@
+punctaje = {
+    'A': {'Buget': 8, 'Interese': 9, 'Vreme': 7, 'Accesibilitate': 6, 'Experiențe': 9, 'Durată': 5},
+    'B': {'Buget': 7, 'Interese': 7, 'Vreme': 8, 'Accesibilitate': 7, 'Experiențe': 8, 'Durată': 7},
+    'C': {'Buget': 6, 'Interese': 8, 'Vreme': 5, 'Accesibilitate': 9, 'Experiențe': 9, 'Durată': 6}
+}
+
+def calculeaza_scor_total(punctaje):
+    scoruri = {destinatie: sum(fact.values()) for destinatie, fact in punctaje.items()}
+    return scoruri
+
+def determina_destinatia(punctaje):
+    scoruri_total = calculeaza_scor_total(punctaje)
+
+    max_scor = None
+    destinatie_aleasa = None
+
+    for destinatie, scor in scoruri_total.items():
+        if max_scor is None or scor > max_scor:
+            max_scor = scor
+            destinatie_aleasa = destinatie
+
+    return destinatie_aleasa, scoruri_total[destinatie_aleasa]
+
+destinatie_aleasa, scor = determina_destinatia(punctaje)
+print(f"Destinația aleasă este: {destinatie_aleasa} cu un scor total de: {scor}")
