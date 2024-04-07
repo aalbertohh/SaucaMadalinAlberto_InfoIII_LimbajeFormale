@@ -1,0 +1,18 @@
+class PDA:
+    def __init__(self):
+        self.stack = ["Z0"]  
+
+    def process(self, input_string):
+        for symbol in input_string:
+            if symbol == '0':
+                self.stack.append('0')  
+            elif symbol == '1' and self.stack[-1] == '0':
+                self.stack.pop()  
+            else:
+                return False 
+        return self.stack == ["Z0"]  
+
+pda = PDA()
+print(pda.process("000111"))
+print(pda.process("001101"))
+print(pda.process("101"))
